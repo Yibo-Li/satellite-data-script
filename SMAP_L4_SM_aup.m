@@ -135,3 +135,4 @@ plotm(coast.lat,coast.long,'k');
 title({FILE_NAME; name}, ... 
       'Interpreter', 'None', 'FontSize', 16,'FontWeight','bold');
 saveas(f, [FILE_NAME '.m.png']);
+exit;
