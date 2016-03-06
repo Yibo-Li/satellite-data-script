@@ -1,7 +1,7 @@
 function SMAP_L4_SM_aup(fileName)
 % SMAP_L4_SM_aup(fileName)  To access and visualize SMAP_L4_SM_aup file in MATLAB
 %
-% Development by "Yibo Li"<gansuliyibo@126.com>
+% Developed by "Yibo Li"<gansuliyibo@126.com>
 % Based on HDF-EOS Tools and Information Center(http://hdfeos.org/zoo/index_openNSIDC_Examples.php#SMAP)
 %
 % Tested under: MATLAB R2010b
