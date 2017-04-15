@@ -1,4 +1,4 @@
-# SAMP Scripts
+# SMAP Scripts
 This is scripts for smap products (http://smap.jpl.nasa.gov/).
 
 Based on the following software:
