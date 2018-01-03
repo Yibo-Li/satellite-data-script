@@ -69,4 +69,4 @@ fclose(fid);
 %
 % Call dlmwrite with a comma as the delimiter
 %
-dlmwrite(filename, m,'-append','delimiter',',','roffset', r,'coffset',c, 'precision',16);
+dlmwrite(filename, m, '-append', 'delimiter', ',', 'roffset', r, 'coffset', c, 'precision', 16);

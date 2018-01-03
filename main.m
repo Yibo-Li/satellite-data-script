@@ -1,16 +1,27 @@
 clc
 clear
 close all
-format long e
+format long g
 
-% 输入文件路径
-pathname = getAllFiles('../inputData/zhongqiInput');
+% Start stopwatch timer
+tic;
 
+% Get files path
+pathname = getAllFiles('D:\soilmositure\matlab\data');
+
+% Filter files which extend is h5
+pathname_filter = zeros(length(pathname), 1);
 for ii = 1:length(pathname)
-    [PATHSTR,NAME,EXT] = fileparts(cell2mat(pathname(ii)));
-	% 输入文件后缀名
-    if strcmp(EXT, '.h5')
-		% 文件操作函数 && 输出文件路径 && 输出文件后缀名
-        SMAP_L4_SM_aup_to_csv([PATHSTR, '\', NAME,EXT], ['../outputData/zhongqiOutput/', NAME, '.csv'])
+    [pathstr, name, ext] = fileparts(cell2mat(pathname(ii)));
+    if strcmp(ext, '.h5')
+        pathname_filter(ii) = 1;
     end
 end
+pathname = pathname(pathname_filter == 1);
+
+% Get Data from SMAP and write to csv file
+[time, data] = SMAP_L4_SM_aup_GetPointData_from_Multifiles(pathname, 'Analysis_Data/sm_surface_analysis', 2966, 285);
+csvwrite_with_headers('./test.csv', [exceltime(time), data], {'time' 'sm_surface_analysis'});
+
+% Print elapsed time
+toc;
