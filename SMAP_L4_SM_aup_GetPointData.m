@@ -1,4 +1,4 @@
-function [time, data] = SMAP_L4_SM_aup_GetPointData(inFileName, dataFieldName, row, column)
+function [time, data] = SMAP_L4_SM_aup_GetPointData(inFileName, dataFieldName, latitude, longtitude)
 % To access and get point data from SMAP_L4_SM_aup file
 % Based on HDF-EOS Tools and Information Center(http://hdfeos.org/zoo/index_openNSIDC_Examples.php#SMAP)
 % Paramters:
@@ -46,7 +46,8 @@ data(data==fillvalue) = NaN;
 sm = [lon(:) lat(:) data(:)];
 
 % Select data which row and column
-data = sm(sm(:,1)==row & sm(:,2)==column, 3);
+[ row, column ] = SMAP_LatLon2RowCol( inFileName, latitude, longtitude );
+data = sm(sm(:,2)==row & sm(:,1)==column, 3);
 
 % Get time of data
 temp = strsplit(inFileName,'_');
