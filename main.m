@@ -32,7 +32,7 @@ data = zeros(length(pathname), length(dataFieldName));
 time = NaT(length(pathname), 1);
 for ii = 1 : length(pathname)
     [time(ii, 1), data(ii, :)] = SMAP_L4_SM_aup_GetPointData(char(pathname(ii)), ...
-        dataFieldName, 40.33333, 97.016667);
+        dataFieldName, 40.33333, 97.016667, 286, 2968);
 end
 
 % Write data to csv file with UTC+8 time
