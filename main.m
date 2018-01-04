@@ -21,7 +21,7 @@ pathname = pathname(pathname_filter == 1);
 
 % Get Data from SMAP and write to csv file
 [time, data] = SMAP_L4_SM_aup_GetPointData_from_Multifiles(pathname, 'Analysis_Data/sm_surface_analysis', 43.335922, 122.65);
-csvwrite_with_headers('./result/SMAP_L4_SM_aup.csv', [exceltime(time), data], {'time' 'sm_surface_analysis'});
+csvwrite_with_headers('./result/SMAP_L4_SM_aup.csv', [exceltime(time) + 8 / 24, data], {'time' 'sm_surface_analysis'});
 
 % Print elapsed time
 toc;
