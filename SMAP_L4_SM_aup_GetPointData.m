@@ -45,7 +45,7 @@ for ii = 1 : length(dataFieldName)
 
     % Select data which row and column
     if nargin < 5
-        fprintf('You should always give row and column, expect the time when you don't know them. \n');
+        fprintf('You should always give row and column, expect the time when you do not know them. \n');
         [ row, column ] = SMAP_LatLon2RowCol( inFileName, latitude, longtitude );
     end
     temp = sm(sm(:,2)==(row - 1) & sm(:,1)==(column -1 ), 3);
