@@ -1,17 +1,17 @@
-function [time, data] = SMAP_L4_SM_aup_GetPointData(inFileName, dataFieldName, latitude, longtitude, row, column)
+function [time, data] = SMAP_L4_SM_aup_GetPointData(inFileName, dataFieldName, row, column)
 % To access and get point data from SMAP_L4_SM_aup file
 % Based on HDF-EOS Tools and Information Center(http://hdfeos.org/zoo/index_openNSIDC_Examples.php#SMAP)
 % Paramters:
 %   inFileName - SMAP_L4_SM_aup file name, eg SMAP_L4_SM_aup_20150814T090000_Vv2030_001
-%   dateFieldName - group/dataset, eg 'Analysis_Data/sm_surface_analysis'
-%   latitude, longtitude - point locations
-%   row, column - point locations, optional
+%   dateFieldName - array of group/dataset, eg 'Analysis_Data/sm_surface_analysis'
+%   row, column - point locations
 % Return:
+%   time - GMT datetime format
 %   data - SMAP level 4 point data value
 
 % Developed by 'Yibo Li' <gansuliyibo@126.com>
-% Tested under: MATLAB R2015b
-% Last updated: 2018-1-3
+% Tested under: MATLAB R2017b
+% Last updated: 2018-1-10
 
 % Open the HDF5 File.
 file_id = H5F.open (inFileName, 'H5F_ACC_RDONLY', 'H5P_DEFAULT');
@@ -28,10 +28,6 @@ for ii = 1 : length(dataFieldName)
     fillvalue=H5A.read (attr_id, 'H5T_NATIVE_DOUBLE');
 
     % Select data which row and column
-    if nargin < 5
-        fprintf('You should always give row and column, expect the time when you do not know them. \n');
-        [ row, column ] = SMAP_LatLon2RowCol( inFileName, latitude, longtitude );
-    end
     temp = value(row, column);
 
     % Replace the fill value with NaN.
